@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Song on Key Press</title>
+    <style>
+        /* Optionally add CSS styles here */
+    </style>
+</head>
+<body>
+    <!-- Your HTML content here -->
+
+    <script>
+        var audio = new Audio("static/Moiré - Circuit 8.mp3");
+        var isPlaying = false;
+
+        function playAudio() {
+            audio.play();
+            isPlaying = true;
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+            isPlaying = false;
+        }
+
+        // Event listener for key press
+        document.addEventListener("keydown", function(event) {
+            // Check if the pressed key is "p" and the audio is not already playing
+            if (event.key === "p" && !isPlaying) {
+                playAudio();
+            }
+        });
+
+        // Event listener for key release
+        document.addEventListener("keyup", function(event) {
+            // Check if the released key is "p" and the audio is playing
+            if (event.key === "p" && isPlaying) {
+                stopAudio();
+            }
+        });
+    </script>
+</body>
+</html>
+

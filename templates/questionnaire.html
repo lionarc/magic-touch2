@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+</head>
+<body>
+    <h1>Questionnaire</h1>
+    <form action="{{ submit_route }}" method="post">
+        {% for question in questions %}
+            <p>{{ question }}</p>
+            {% for answer in answers[loop.index0] %}
+                <input type="radio" id="{{ answer }}" name="{{ question }}" value="{{ answer }}" required>
+                <label for="{{ answer }}">{{ answer }}</label><br>
+            {% endfor %}
+            <br>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+
+
